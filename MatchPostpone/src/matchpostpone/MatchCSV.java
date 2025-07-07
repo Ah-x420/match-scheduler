@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package matchpostpone;
 
 import java.io.BufferedReader;
@@ -18,10 +23,17 @@ public class MatchCSV {
 
                 String teamA = data[0].trim();
                 String teamB = data[1].trim();
-                String date = data[2].trim();
+                String teamC = data[2].trim();
+                String teamD = data[3].trim();
+                String teamE = data[4].trim();
+                String teamF = data[5].trim();
+                String teamG = data[6].trim();
+                String teamH = data[7].trim();
+                
+                String date = data[8].trim();
 
                 
-                Matches match = new LeagueMatch(teamA, teamB, date, "Premier League");
+                Matches match = new LeagueMatch(teamA, teamB, teamC ,teamD , teamE ,teamF ,teamG , teamH, date, "Premier League");
                 matches.add(match);
             }
         } catch (IOException e) {
