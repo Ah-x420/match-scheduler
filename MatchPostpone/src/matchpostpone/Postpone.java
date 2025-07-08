@@ -1,17 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package matchpostpone;
 
-/**
- *
- * @author PC
- */
+
 public interface Postpone {
-    boolean isPostponed();
-    void setPostponed(boolean status);
+    void postp();
 }
-
-
+// make the system postpone the matches to september onward to conserve player energy and water consumption
