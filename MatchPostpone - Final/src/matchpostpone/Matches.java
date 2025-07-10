@@ -46,16 +46,13 @@ public boolean should_Postpone(Date otherDate) {
     public String getStatus() { 
         return status;
     }
+    public void setStatus(String status) {
+        this.status = status;
+    }
      public Date getDateAsDate() throws ParseException {
-
-            // Handle different date formats
             SimpleDateFormat format;
-            if (date.contains("/")) {
                 format = new SimpleDateFormat("dd/MM/yyyy");
-            } else {
-                format = new SimpleDateFormat("MM/dd/yyyy");
-            }
-            return format.parse(date);
+                return format.parse(date);
         }
 
     public abstract void display();
@@ -65,7 +62,4 @@ public boolean should_Postpone(Date otherDate) {
         return teamA + " vs " + teamB + " on " + date + " " + status + ".";
     }
 
-    void setStatus(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

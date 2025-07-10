@@ -17,13 +17,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 
 /**
  *
- * @author PC
+ * @author Mosvb 98
  */
 public class PostponedFrame extends javax.swing.JFrame {
+
+    private TableModel model;
    
     /**
      * Creates new form PostponedFrame
@@ -34,10 +37,8 @@ public class PostponedFrame extends javax.swing.JFrame {
 
 public void loadPostponedMatches() {
     try {
-        // Load matches from CSV
         ArrayList<Matches> matches = MatchCSV.readfromCSV("matches.csv");
         
-        // First pass: Compare all matches with each other
         for (int i = 0; i < matches.size(); i++) {
             Matches match1 = matches.get(i);
             
@@ -48,16 +49,13 @@ public void loadPostponedMatches() {
                     Matches match2 = matches.get(j);
                     Date date2 = match2.getDateAsDate();
                     
-                    // Check if same team is playing in both matches
                     boolean sameTeam = match1.getTeamA().equals(match2.getTeamA()) ||
                                      match1.getTeamA().equals(match2.getTeamB()) ||
                                      match1.getTeamB().equals(match2.getTeamA()) ||
                                      match1.getTeamB().equals(match2.getTeamB());
                     
-                    // Calculate days between matches
                     long daysBetween = Math.abs((date1.getTime()-date2.getTime())/ (1000 * 60 * 60 * 24));
                     
-                    // If same team and within 5 days, postpone the later match
                     if (sameTeam && daysBetween < 5) {
                         if (date1.before(date2)) {
                             match2.setStatus("Postponed");
@@ -71,14 +69,12 @@ public void loadPostponedMatches() {
             }
         }
         
-        // Create table model
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Team A");
         model.addColumn("Team B");
         model.addColumn("Match Date");
         model.addColumn("Status");
         
-        // Populate the table with match data
         for (Matches match : matches) {
             model.addRow(new Object[]{
                 match.getTeamA(),
@@ -88,7 +84,6 @@ public void loadPostponedMatches() {
             });
         }
         
-        // Set the model to the table
         jTable1.setModel(model);
         
     } 
@@ -109,6 +104,7 @@ public void loadPostponedMatches() {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,8 +112,8 @@ public void loadPostponedMatches() {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("Postponed Matches ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, 39));
+        jLabel1.setText("Postponed Matches Schedule  ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, -1, 39));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,7 +125,7 @@ public void loadPostponedMatches() {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 375, 275));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 570, 275));
 
         jButton1.setText("Back ");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,11 +133,19 @@ public void loadPostponedMatches() {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, -1, 30));
+
+        jButton2.setText("load result");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
 
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/matchpostpone/WhatsApp Image 2025-07-10 at 12.22.33_98570c14.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 660, 430));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 830, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,6 +155,13 @@ public void loadPostponedMatches() {
         home.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        loadPostponedMatches();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,7 +190,6 @@ public void loadPostponedMatches() {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
@@ -195,6 +205,7 @@ public void loadPostponedMatches() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

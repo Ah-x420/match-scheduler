@@ -44,17 +44,17 @@ public class HomePage extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("       ProLeague Scheduler");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 600, 89));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 600, 89));
 
         PostponeB.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        PostponeB.setForeground(new java.awt.Color(153, 0, 51));
-        PostponeB.setText("2- View Schedule after postpone");
+        PostponeB.setForeground(new java.awt.Color(102, 0, 51));
+        PostponeB.setText("2- View postponement Schedule");
         PostponeB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PostponeBActionPerformed(evt);
             }
         });
-        getContentPane().add(PostponeB, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 290, 70));
+        getContentPane().add(PostponeB, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 290, 70));
 
         button_Schedule.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         button_Schedule.setForeground(new java.awt.Color(102, 0, 51));
@@ -64,7 +64,7 @@ public class HomePage extends javax.swing.JFrame {
                 button_ScheduleActionPerformed(evt);
             }
         });
-        getContentPane().add(button_Schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 290, 60));
+        getContentPane().add(button_Schedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 290, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/matchpostpone/WhatsApp Image 2025-07-10 at 12.22.33_98570c14.jpg"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 920, 420));
@@ -73,11 +73,11 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void scheduleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_scheduleButtonActionPerformed
-
+// old button that didn't work 
     }//GEN-LAST:event_scheduleButtonActionPerformed
 
     private void postponedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_postponedButtonActionPerformed
-
+// old button that didn't work 
     }//GEN-LAST:event_postponedButtonActionPerformed
 
     private void PostponeBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostponeBActionPerformed

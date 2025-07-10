@@ -27,17 +27,14 @@ public class SchedulerFrame extends javax.swing.JFrame {
     
         public void loadMatchData() {
         try {
-            // Load matches from CSV
             ArrayList<Matches> matches = MatchCSV.readfromCSV("matches.csv");
             
-            // Create table model with appropriate column names
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Team A");
             model.addColumn("Team B");
             model.addColumn("Match Date");
             model.addColumn("Status");
             
-            // Populate the table with match data
             for (Matches match : matches) {
                 model.addRow(new Object[]{
                     match.getTeamA(),
@@ -47,7 +44,6 @@ public class SchedulerFrame extends javax.swing.JFrame {
                 });
             }
             
-            // Set the model to the table
             jTable1.setModel(model);
             
         } catch (IOException ex) {
